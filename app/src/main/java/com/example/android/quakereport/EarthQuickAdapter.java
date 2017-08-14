@@ -15,14 +15,14 @@ import java.util.ArrayList;
  * Created by soumyajit on 12/8/17.
  */
 
-public class EarthQuickAdapter extends ArrayAdapter<EarthQuickInfo>{
+public class EarthQuickAdapter extends ArrayAdapter<Earthquake>{
 
     public int list_id;
     /**
      * creating Constructor
      */
-    public EarthQuickAdapter(Activity context, ArrayList<EarthQuickInfo> earthQuickInfos) {
-        super(context, 0, earthQuickInfos); // Intializing the ArrayAdapter class
+    public EarthQuickAdapter(Activity context, ArrayList<Earthquake> earthquakes) {
+        super(context, 0, earthquakes); // Intializing the ArrayAdapter class
         //this.list_id = id;
     }
 
@@ -34,7 +34,7 @@ public class EarthQuickAdapter extends ArrayAdapter<EarthQuickInfo>{
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item_eql, parent, false);
 
-            EarthQuickInfo currentItem = getItem(position);
+            Earthquake currentItem = getItem(position);
             TextView rateTextView = (TextView) listItemView.findViewById(R.id.list_rate);
             rateTextView.setText(currentItem.getRateInfo());
 

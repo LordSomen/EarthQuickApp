@@ -9,15 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by soumyajit on 12/8/17.
  */
 
-public class EarthQuickAdapter extends ArrayAdapter<Earthquake>{
+public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
 
-    public int list_id;
+
     /**
      * creating Constructor
      */
@@ -35,15 +37,27 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake>{
                     R.layout.list_item_eql, parent, false);
 
             Earthquake currentItem = getItem(position);
+
+            //shows the magnitude
+
             TextView rateTextView = (TextView) listItemView.findViewById(R.id.list_rate);
             rateTextView.setText(currentItem.getRateInfo());
+
+            //shows the place where earthQuick occurs
 
             TextView placeTextView = (TextView) listItemView.findViewById(R.id.list_place);
             placeTextView.setText(currentItem.getPlaceInfo());
 
-            TextView datetimeTextView = (TextView) listItemView.findViewById(R.id.list_datetime);
-            datetimeTextView.setText(currentItem.getdatetimeInfo());
+            //Shows the time and date
 
+            Date dateTimeObj = new Date(currentItem.getdatetimeInfo());
+            String date = formatDate(dateTimeObj);
+            TextView dateTextView = (TextView) listItemView.findViewById(R.id.list_date);
+            dateTextView.setText(date);
+
+            String time = formatTime(dateTimeObj);
+            TextView timeTextView = (TextView) listItemView.findViewById(R.id.list_time);
+            timeTextView.setText(time);
             //listItemView.setBackgroundResource(list_id);
             // Set the theme color for the list item
             // Find the color that the resource ID maps
@@ -54,4 +68,14 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake>{
         return listItemView;
     }
 
+    private String formatDate(Date dateTimeObj){
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd,yyyy");
+        return dateFormat.format(dateTimeObj);
     }
+    private String formatTime(Date dateTimeObj){
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+        return timeFormat.format(dateTimeObj);
+    }
+}

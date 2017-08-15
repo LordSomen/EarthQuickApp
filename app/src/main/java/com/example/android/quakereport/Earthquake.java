@@ -7,8 +7,8 @@ public class Earthquake {
 
     private String rate;
     private String place;
-    private String dateTime;
-        public Earthquake(String rate , String place , String dateTime){
+    private Long dateTime;
+        public Earthquake(String rate , String place , Long dateTime){
             this.rate = rate;
             this.place = place;
             this.dateTime = dateTime;
@@ -21,7 +21,7 @@ public class Earthquake {
     String getPlaceInfo(){
         return place;
     }
-    String getdatetimeInfo(){
+    Long getdatetimeInfo(){
         return dateTime;
     }
 

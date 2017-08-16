@@ -5,23 +5,23 @@ package com.example.android.quakereport;
 
 public class Earthquake {
 
-    private String rate;
+    private double mag;
     private String place;
     private Long dateTime;
-        public Earthquake(String rate , String place , Long dateTime){
-            this.rate = rate;
+        public Earthquake(double mag , String place , Long dateTime){
+            this.mag = mag;
             this.place = place;
             this.dateTime = dateTime;
         }
 
-    String getRateInfo(){
-        return rate;
+    double getEarthQuickMagInfo(){
+        return mag;
     }
 
     String getPlaceInfo(){
         return place;
     }
-    Long getdatetimeInfo(){
+    Long getDateTimeInfo(){
         return dateTime;
     }
 

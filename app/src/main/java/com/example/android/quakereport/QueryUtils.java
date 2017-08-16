@@ -59,7 +59,7 @@ public final class QueryUtils {
                     // taking the properties object under the current json object
                     JSONObject propertiesObj = objIndexFeatures.getJSONObject("properties");
                     // now extracting the required properties form the object
-                    String magnitude = propertiesObj.getString("mag");
+                    double magnitude = propertiesObj.getDouble("mag");
                     Long time = propertiesObj.getLong("time");
                     String place = propertiesObj.getString("place");
 

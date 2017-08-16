@@ -8,32 +8,61 @@
         android:id="@+id/list_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "7.5"
-        android:textSize="12sp"
+        android:text = "7.53"
+        android:textSize="14sp"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_weight="2"
+        android:layout_weight="0"
         android:gravity="start" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
     <TextView
         android:id="@+id/list_place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "sanfransisco"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="12sp"
+        android:text = "23km from "
+        android:textSize="14sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_weight="1"
-        android:gravity="center_horizontal"/>
+        android:gravity="end"/>
+        <TextView
+            android:id="@+id/list_place_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "sanfransisco"
+
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_weight="1"
+            android:gravity="end"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="0">
     <TextView
-        android:id="@+id/list_datetime"
+        android:id="@+id/list_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text = "20th oct,2017"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:gravity="end" />
 
-
+        <TextView
+            android:id="@+id/list_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "07:30 pm"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_weight="1"
+            android:gravity="end" />
+</LinearLayout>
 
 </LinearLayout>

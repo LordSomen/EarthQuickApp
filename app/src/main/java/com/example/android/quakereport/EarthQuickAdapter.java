@@ -44,10 +44,17 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
             rateTextView.setText(currentItem.getRateInfo());
 
             //shows the place where earthQuick occurs
-
+            String place = currentItem.getPlaceInfo();
+            String q = "Near Of";
+            int index = place.lastIndexOf("of");
+            if(index!=-1){
+                q= place.substring(0,index+3);
+                place=place.substring(index+3,place.length());
+            }
             TextView placeTextView = (TextView) listItemView.findViewById(R.id.list_place);
-            placeTextView.setText(currentItem.getPlaceInfo());
-
+            placeTextView.setText(q);
+            TextView placeTextView2 = (TextView) listItemView.findViewById(R.id.list_place_country);
+            placeTextView2.setText(place);
             //Shows the time and date
 
             Date dateTimeObj = new Date(currentItem.getdatetimeInfo());

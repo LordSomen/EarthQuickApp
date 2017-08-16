@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,8 +41,9 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
 
             //shows the magnitude
 
-            TextView rateTextView = (TextView) listItemView.findViewById(R.id.list_rate);
-            rateTextView.setText(currentItem.getRateInfo());
+            String mag = formatMagnitude(currentItem.getEarthQuickMagInfo());
+            TextView magTextView = (TextView) listItemView.findViewById(R.id.list_rate);
+            magTextView.setText(mag);
 
             //shows the place where earthQuick occurs
             String place = currentItem.getPlaceInfo();
@@ -57,7 +59,7 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
             placeTextView2.setText(place);
             //Shows the time and date
 
-            Date dateTimeObj = new Date(currentItem.getdatetimeInfo());
+            Date dateTimeObj = new Date(currentItem.getDateTimeInfo());
             String date = formatDate(dateTimeObj);
             TextView dateTextView = (TextView) listItemView.findViewById(R.id.list_date);
             dateTextView.setText(date);
@@ -66,8 +68,7 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
             TextView timeTextView = (TextView) listItemView.findViewById(R.id.list_time);
             timeTextView.setText(time);
             //listItemView.setBackgroundResource(list_id);
-            // Set the theme color for the list item
-            // Find the color that the resource ID maps
+            // Set the color that the resource ID maps
             // Set the background color of the text container View
 
 
@@ -75,6 +76,10 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
         return listItemView;
     }
 
+    private String formatMagnitude(double mag){
+        DecimalFormat magFormat = new DecimalFormat("0.0");
+        return magFormat.format(mag);
+    }
     private String formatDate(Date dateTimeObj){
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd,yyyy");

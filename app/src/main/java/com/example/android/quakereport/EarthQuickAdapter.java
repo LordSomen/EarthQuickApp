@@ -1,8 +1,10 @@
 package com.example.android.quakereport;
 
 import android.app.Activity;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,8 +44,16 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
             //shows the magnitude
 
             String mag = formatMagnitude(currentItem.getEarthQuickMagInfo());
-            TextView magTextView = (TextView) listItemView.findViewById(R.id.list_rate);
+            TextView magTextView = (TextView) listItemView.findViewById(R.id.list_magnitude);
             magTextView.setText(mag);
+            GradientDrawable magnitudeCircle = (GradientDrawable) magTextView.getBackground();
+
+            // Get the appropriate background color based on the current earthquake magnitude
+            int magnitudeColor = getMagnitudeColor(currentItem.getEarthQuickMagInfo());
+
+            // Set the color on the magnitude circle
+            magnitudeCircle.setColor(magnitudeColor);
+
 
             //shows the place where earthQuick occurs
             String place = currentItem.getPlaceInfo();
@@ -70,7 +80,8 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
             //listItemView.setBackgroundResource(list_id);
             // Set the color that the resource ID maps
             // Set the background color of the text container View
-
+            // Set the proper background color on the magnitude circle.
+            // Fetch the background from the TextView, which is a GradientDrawable.
 
         }
         return listItemView;
@@ -80,6 +91,33 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
         DecimalFormat magFormat = new DecimalFormat("0.0");
         return magFormat.format(mag);
     }
+    private int getMagnitudeColor(double mag){
+        int magCircleColor,magInt;
+        magInt = (int)mag;
+        switch(magInt){
+            case 0:
+            case 1: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude1);
+                    break;
+            case 2: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude2);
+                    break;
+            case 3: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude3);
+                    break;
+            case 4: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude4);
+                    break;
+            case 5: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude5);
+                    break;
+            case 6: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude6);
+                    break;
+            case 7: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude7);
+                    break;
+            case 8: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude8);
+                    break;
+            case 9: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude9);
+                    break;
+            default: magCircleColor =ContextCompat.getColor(getContext(), R.color.magnitude10plus);
+        }
+            return magCircleColor;
+    }
     private String formatDate(Date dateTimeObj){
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd,yyyy");
@@ -87,7 +125,7 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
     }
     private String formatTime(Date dateTimeObj){
 
-        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
         return timeFormat.format(dateTimeObj);
     }
 }

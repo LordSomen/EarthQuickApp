@@ -98,6 +98,7 @@ public class EarthQuickAdapter extends ArrayAdapter<Earthquake> {
             case 0:
             case 1: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude1);
                     break;
+
             case 2: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude2);
                     break;
             case 3: magCircleColor = ContextCompat.getColor(getContext(), R.color.magnitude3);

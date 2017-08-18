@@ -8,10 +8,12 @@ public class Earthquake {
     private double mag;
     private String place;
     private Long dateTime;
-        public Earthquake(double mag , String place , Long dateTime){
+    private String URL;
+        public Earthquake(double mag , String place , Long dateTime,String URL){
             this.mag = mag;
             this.place = place;
             this.dateTime = dateTime;
+            this.URL = URL;
         }
 
     double getEarthQuickMagInfo(){
@@ -24,5 +26,7 @@ public class Earthquake {
     Long getDateTimeInfo(){
         return dateTime;
     }
-
+    String getURL(){
+        return URL;
+    }
 }

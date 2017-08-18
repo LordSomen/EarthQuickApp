@@ -62,10 +62,11 @@ public final class QueryUtils {
                     double magnitude = propertiesObj.getDouble("mag");
                     Long time = propertiesObj.getLong("time");
                     String place = propertiesObj.getString("place");
-
-                    earthquakes.add(new Earthquake(magnitude,place,time));
-
+                    String URL = propertiesObj.getString("url");
+                    earthquakes.add(new Earthquake(magnitude,place,time,URL));
                 }
+
+
 
             // TODO: Parse the response given by the SAMPLE_JSON_RESPONSE string and
             // build up a list of Earthquake objects with the corresponding data.
